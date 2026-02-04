@@ -27,3 +27,12 @@
 - [x] Criar README.md com diagrama ER
 - [x] Adicionar instruções de instalação e uso
 - [ ] Preparar para entrega no GitHub
+
+## Etapa 07: Desenvolvimento do Frontend
+- [x] Criar layout do dashboard com navegação lateral
+- [x] Implementar página de gerenciamento de produtos
+- [x] Implementar página de gerenciamento de clientes
+- [x] Implementar página de gerenciamento de pedidos
+- [x] Implementar página de controle de estoque
+- [x] Implementar página de documentação da API
+- [x] Testar todas as funcionalidades no navegador
