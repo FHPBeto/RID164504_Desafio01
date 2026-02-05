@@ -36,3 +36,16 @@
 - [x] Implementar página de controle de estoque
 - [x] Implementar página de documentação da API
 - [x] Testar todas as funcionalidades no navegador
+
+## Etapa 08: Site de Documentação Inventor
+- [x] Criar estrutura de navegação por etapas
+- [x] Implementar páginas de conteúdo do guia
+- [x] Adicionar barra de progresso
+- [x] Implementar busca e índice lateral
+- [x] Testar navegação e responsividade
+
+## Etapa 09: Guia Visual Inventor 2025
+- [x] Criar guia visual com screenshots das configurações
+- [x] Documentar cada aba do Application Options
+- [x] Adicionar anotações nas imagens
+- [ ] Integrar ao site de documentação

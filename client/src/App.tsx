@@ -1,6 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
+import InventorGuide from "@/pages/InventorGuide";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -20,7 +21,8 @@ function Router() {
       <Route path={"/clientes"} component={Clientes} />
       <Route path={"/pedidos"} component={Pedidos} />
       <Route path={"/estoque"} component={Estoque} />
-      <Route path={"/api-docs"} component={ApiDocs} />
+        <Route path="/api-docs" component={ApiDocs} />
+      <Route path="/inventor-guide" component={InventorGuide} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

@@ -1,7 +1,7 @@
 import DashboardLayout from "@/components/DashboardLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { trpc } from "@/lib/trpc";
-import { Package, Users, ShoppingCart, Warehouse } from "lucide-react";
+import { Package, Users, ShoppingCart, Warehouse, Box } from "lucide-react";
 
 export default function Home() {
   const { data: produtos } = trpc.produtos.list.useQuery();
