@@ -49,3 +49,33 @@
 - [x] Documentar cada aba do Application Options
 - [x] Adicionar anotações nas imagens
 - [ ] Integrar ao site de documentação
+
+## Etapa 10: Melhorias no Site de Documentação Inventor
+- [x] Implementar funcionalidade de busca em todas as 10 partes do guia
+- [x] Criar página /visual-guide com tabelas e checklists do guia visual
+- [x] Adicionar modo claro/escuro com toggle
+
+## Etapa 11: Sistema de Biblioteca - Backend (Node.js API)
+- [ ] Criar novo projeto Node.js + Express
+- [ ] Configurar banco de dados para livros
+- [ ] Implementar rota GET /livros (listar todos)
+- [ ] Implementar rota GET /livros/:id (buscar por ID)
+- [ ] Implementar rota POST /livros (criar livro)
+- [ ] Implementar rota PUT /livros/:id (atualizar livro)
+- [ ] Implementar rota DELETE /livros/:id (deletar livro)
+- [ ] Testar rotas com Insomnia/Postman
+
+## Etapa 12: Sistema de Biblioteca - Frontend (React)
+- [ ] Clonar/adaptar projeto React fornecido
+- [ ] Configurar Vite + React Router
+- [ ] Criar service para consumir API
+- [ ] Implementar views de listagem de livros
+- [ ] Implementar formulário de cadastro/edição
+- [ ] Implementar funcionalidade de exclusão
+- [ ] Testar integração completa
+
+## Etapa 13: Deploy Sistema de Biblioteca
+- [ ] Subir código no GitHub com nomenclatura correta (RID)
+- [ ] Fazer deploy do front-end no Netlify
+- [ ] Configurar variáveis de ambiente
+- [ ] Testar aplicação em produção

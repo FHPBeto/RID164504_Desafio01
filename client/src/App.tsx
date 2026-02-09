@@ -2,6 +2,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import InventorGuide from "@/pages/InventorGuide";
+import VisualGuide from "@/pages/VisualGuide";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -23,6 +24,7 @@ function Router() {
       <Route path={"/estoque"} component={Estoque} />
         <Route path="/api-docs" component={ApiDocs} />
       <Route path="/inventor-guide" component={InventorGuide} />
+      <Route path="/visual-guide" component={VisualGuide} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
@@ -40,7 +42,7 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider
         defaultTheme="light"
-        // switchable
+        switchable
       >
         <TooltipProvider>
           <Toaster />

@@ -17,10 +17,17 @@ import {
   Edit,
   Box,
   Save,
-  AlertCircle
+  AlertCircle,
+  Moon,
+  Sun,
+  X
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "wouter";
+import { useTheme } from "@/contexts/ThemeContext";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { searchInContent, highlightText } from "@/utils/searchContent";
 
 const sections = [
   { id: 1, title: "Introdução", icon: Home },
@@ -38,6 +45,25 @@ const sections = [
 export default function InventorGuide() {
   const [currentSection, setCurrentSection] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showSearchResults, setShowSearchResults] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+
+  // Search functionality
+  const searchResults = useMemo(() => {
+    if (searchTerm.trim().length < 2) return [];
+    return searchInContent(searchTerm);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    setShowSearchResults(searchTerm.trim().length >= 2);
+  }, [searchTerm]);
+
+  const handleSearchResultClick = (sectionId: number) => {
+    setCurrentSection(sectionId);
+    setSearchTerm("");
+    setShowSearchResults(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const progress = (currentSection / sections.length) * 100;
 
@@ -56,37 +82,119 @@ export default function InventorGuide() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       {/* Header */}
-      <header className="bg-white border-b sticky top-0 z-50 shadow-sm">
+      <header className="bg-white dark:bg-gray-800 border-b dark:border-gray-700 sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Box className="w-8 h-8 text-blue-600" />
+              <Box className="w-8 h-8 text-blue-600 dark:text-blue-400" />
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">
+                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
                   Guia Inventor - Edição de STL
                 </h1>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
                   Autodesk Inventor 2025 | Malhas de Alta Resolução
                 </p>
               </div>
             </div>
-            <Link href="/">
-              <Button variant="outline">
-                <Home className="w-4 h-4 mr-2" />
-                Voltar ao Dashboard
+            <div className="flex items-center gap-2">
+              <Link href="/visual-guide">
+                <Button variant="outline" size="sm">
+                  <Settings className="w-4 h-4 mr-2" />
+                  Guia Visual
+                </Button>
+              </Link>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={toggleTheme}
+                title={theme === 'dark' ? 'Modo Claro' : 'Modo Escuro'}
+              >
+                {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
               </Button>
-            </Link>
+              <Link href="/">
+                <Button variant="outline">
+                  <Home className="w-4 h-4 mr-2" />
+                  Dashboard
+                </Button>
+              </Link>
+            </div>
           </div>
 
           {/* Progress Bar */}
           <div className="mt-4">
-            <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
+            <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-2">
               <span>Progresso: Parte {currentSection} de {sections.length}</span>
               <span>{Math.round(progress)}% concluído</span>
             </div>
             <Progress value={progress} className="h-2" />
+          </div>
+          
+          {/* Search Bar */}
+          <div className="mt-4 relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Input
+              type="text"
+              placeholder="Buscar no guia (ex: 'importar STL', 'configuração', 'malha')..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10 pr-10"
+            />
+            {searchTerm && (
+              <button
+                onClick={() => {
+                  setSearchTerm("");
+                  setShowSearchResults(false);
+                }}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+            
+            {/* Search Results Dropdown */}
+            {showSearchResults && searchResults.length > 0 && (
+              <Card className="absolute top-full mt-2 w-full z-50 max-h-96 overflow-y-auto shadow-lg">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-sm">
+                    {searchResults.length} resultado{searchResults.length !== 1 ? 's' : ''} encontrado{searchResults.length !== 1 ? 's' : ''}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  {searchResults.map((result, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleSearchResultClick(result.sectionId)}
+                      className="w-full text-left p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors border border-gray-200 dark:border-gray-600"
+                    >
+                      <div className="flex items-center gap-2 mb-1">
+                        <Badge variant="outline" className="text-xs">
+                          Parte {result.sectionId}
+                        </Badge>
+                        <span className="font-semibold text-sm text-gray-900 dark:text-white">
+                          {result.sectionTitle}
+                        </span>
+                      </div>
+                      <p 
+                        className="text-sm text-gray-600 dark:text-gray-300"
+                        dangerouslySetInnerHTML={{ 
+                          __html: highlightText(result.context, searchTerm) 
+                        }}
+                      />
+                    </button>
+                  ))}
+                </CardContent>
+              </Card>
+            )}
+            
+            {showSearchResults && searchResults.length === 0 && (
+              <Card className="absolute top-full mt-2 w-full z-50 shadow-lg">
+                <CardContent className="p-4 text-center text-gray-600 dark:text-gray-400">
+                  Nenhum resultado encontrado para "{searchTerm}"
+                </CardContent>
+              </Card>
+            )}
           </div>
         </div>
       </header>
