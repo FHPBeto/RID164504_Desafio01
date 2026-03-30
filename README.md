@@ -4,7 +4,7 @@ Sistema backend completo para gerenciamento de estoque e pedidos de produtos de 
 
 ---
 
-## 📋 Índice
+ Índice
 
 - [Sobre o Projeto](#sobre-o-projeto)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
@@ -16,11 +16,11 @@ Sistema backend completo para gerenciamento de estoque e pedidos de produtos de 
 
 ---
 
-## 🎯 Sobre o Projeto
+  Sobre o Projeto
 
-O **DNCommerce** é um sistema backend robusto projetado para gerenciar operações de e-commerce, com foco em produtos de beleza. O sistema oferece funcionalidades completas de CRUD para produtos, clientes, pedidos e controle de estoque, além de integração automática entre vendas e atualização de estoque.
+O "DNCommerce" é um sistema backend robusto projetado para gerenciar operações de e-commerce, com foco em produtos de beleza. O sistema oferece funcionalidades completas de CRUD para produtos, clientes, pedidos e controle de estoque, além de integração automática entre vendas e atualização de estoque.
 
-### Funcionalidades Principais
+   Funcionalidades Principais
 
 O sistema implementa as seguintes funcionalidades essenciais para operação de um e-commerce:
 
@@ -34,7 +34,7 @@ O sistema implementa as seguintes funcionalidades essenciais para operação de 
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+ Tecnologias Utilizadas
 
 | Tecnologia | Versão | Descrição |
 |------------|--------|-----------|
@@ -49,7 +49,7 @@ O sistema implementa as seguintes funcionalidades essenciais para operação de 
 
 ---
 
-## 📊 Modelagem do Banco de Dados
+ Modelagem do Banco de Dados
 
 O banco de dados foi modelado seguindo princípios de normalização e integridade referencial. A estrutura contempla cinco entidades principais com relacionamentos bem definidos.
 
@@ -120,7 +120,7 @@ erDiagram
 
 ---
 
-## 🚀 Instalação
+   Instalação
 
 ### Pré-requisitos
 
@@ -416,11 +416,11 @@ const result = await trpc.pedidos.updateStatus.mutate({
 
 ---
 
-## 🧪 Testes
+   Testes
 
 O projeto inclui uma suíte completa de testes unitários utilizando Vitest. Os testes cobrem todas as funcionalidades principais da API.
 
-### Executar os Testes
+   Executar os Testes
 
 ```bash
 pnpm test
@@ -468,7 +468,7 @@ Todos os testes passam com sucesso, garantindo a confiabilidade do sistema.
 
 ---
 
-## 📁 Estrutura do Projeto
+ Estrutura do Projeto
 
 ```
 analise-modelo-biblioteca/
@@ -502,21 +502,21 @@ analise-modelo-biblioteca/
 └── README.md                   # Este arquivo
 ```
 
-### Arquivos Principais
+   Arquivos Principais
 
-**`server/routers.ts`**: Define todos os endpoints da API usando tRPC. Cada rota é tipada e validada com Zod.
+`server/routers.ts`: Define todos os endpoints da API usando tRPC. Cada rota é tipada e validada com Zod.
 
-**`server/db.ts`**: Contém as funções auxiliares para interação com o banco de dados usando Drizzle ORM.
+`server/db.ts`: Contém as funções auxiliares para interação com o banco de dados usando Drizzle ORM.
 
-**`drizzle/schema.ts`**: Define o schema do banco de dados, incluindo todas as tabelas, colunas, tipos e relacionamentos.
+`drizzle/schema.ts`: Define o schema do banco de dados, incluindo todas as tabelas, colunas, tipos e relacionamentos.
 
-**`server/dncommerce.test.ts`**: Suite completa de testes unitários cobrindo todas as funcionalidades da API.
+`server/dncommerce.test.ts`: Suite completa de testes unitários cobrindo todas as funcionalidades da API.
 
 ---
 
-## 🎓 Considerações Técnicas
+ Considerações Técnicas
 
-### Decisões de Design
+ Decisões de Design
 
 **Type Safety**: O uso de tRPC garante que cliente e servidor compartilhem os mesmos tipos, eliminando erros de comunicação em tempo de compilação.
 
@@ -541,14 +541,14 @@ Possíveis expansões do sistema incluem:
 
 ---
 
-## 📄 Licença
+   Licença
 
 Este projeto foi desenvolvido como parte de um desafio técnico e está disponível sob a licença MIT.
 
 ---
 
-## 👨‍💻 Autor
+   Autor
 
-**Manus AI**
+Humberto José de Oliveira
 
 Sistema desenvolvido utilizando as melhores práticas de desenvolvimento backend, com foco em escalabilidade, manutenibilidade e type-safety.
